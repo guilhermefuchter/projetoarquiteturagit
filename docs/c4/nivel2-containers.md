@@ -2,7 +2,7 @@
 
 Este diagrama decompõe o sistema VendaMais em seus containers principais, mostrando as tecnologias utilizadas e as responsabilidades de cada componente.
 
----
+---      
 
 ```mermaid
 flowchart TD
