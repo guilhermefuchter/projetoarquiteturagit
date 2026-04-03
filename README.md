@@ -2,7 +2,7 @@
 
 Repositório de artefatos arquiteturais do projeto integrador **VendaMais**, desenvolvido na disciplina **DAS2 2026**.
 
----
+--- 
 
 ## Descrição do Projeto
 
