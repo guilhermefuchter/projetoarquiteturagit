@@ -5,30 +5,38 @@ Este diagrama apresenta o sistema VendaMais em seu contexto, mostrando os usuár
 ---
 
 ```mermaid
-C4Context
-    title Diagrama de Contexto — VendaMais
+flowchart TD
+    vendedor["👤 Vendedor\nAcompanha metas, pedidos e desempenho de vendas pelo painel."]
+    gestor["👤 Gestor Comercial\nVisualiza relatórios consolidados e define metas da equipe."]
+    admin["👤 Administrador\nGerencia usuários, integrações e configurações da plataforma."]
 
-    Person(vendedor, "Vendedor", "Acompanha metas, pedidos e desempenho de vendas pelo painel.")
-    Person(gestor, "Gestor Comercial", "Visualiza relatórios consolidados e define metas da equipe.")
-    Person(admin, "Administrador", "Gerencia usuários, integrações e configurações da plataforma.")
+    vendamais["🖥️ VendaMais\nPlataforma de apoio a vendas que centraliza dados de clientes, pedidos e desempenho comercial."]
 
-    System(vendamais, "VendaMais", "Plataforma de apoio a vendas que centraliza dados de clientes, pedidos e desempenho comercial.")
+    crm["⬜ Sistema CRM\nFornece dados de clientes e oportunidades (ex: Salesforce)."]
+    erp["⬜ Sistema ERP\nExporta dados de pedidos, produtos e estoque em lotes periódicos."]
+    ecommerce["⬜ Plataforma E-commerce\nEnvia eventos de pedidos em tempo real via webhook."]
+    powerbi["⬜ Power BI\nConsome dados do VendaMais para dashboards executivos."]
+    email["⬜ Serviço de E-mail\nEnvia notificações e alertas para vendedores e gestores."]
 
-    System_Ext(crm, "Sistema CRM", "Fornece dados de clientes e oportunidades de negócio (ex: Salesforce).")
-    System_Ext(erp, "Sistema ERP", "Exporta dados de pedidos, produtos e estoque em lotes periódicos.")
-    System_Ext(ecommerce, "Plataforma E-commerce", "Envia eventos de pedidos em tempo real via webhook.")
-    System_Ext(powerbi, "Power BI", "Consome dados do VendaMais para geração de dashboards executivos.")
-    System_Ext(email, "Serviço de E-mail", "Envia notificações e alertas para vendedores e gestores.")
+    vendedor -->|"Acessa via navegador web"| vendamais
+    gestor -->|"Acessa via navegador web"| vendamais
+    admin -->|"Gerencia via painel administrativo"| vendamais
 
-    Rel(vendedor, vendamais, "Acessa via navegador web")
-    Rel(gestor, vendamais, "Acessa via navegador web")
-    Rel(admin, vendamais, "Gerencia via painel administrativo")
+    crm -->|"API REST / JSON"| vendamais
+    erp -->|"Arquivo CSV / Batch diário"| vendamais
+    ecommerce -->|"Webhook HTTPS"| vendamais
+    vendamais -->|"Azure SQL / Conector nativo"| powerbi
+    vendamais -->|"SMTP / SendGrid"| email
 
-    Rel(crm, vendamais, "Envia dados de clientes e oportunidades", "API REST / JSON")
-    Rel(erp, vendamais, "Envia exportações de pedidos e produtos", "Arquivo CSV / Batch diário")
-    Rel(ecommerce, vendamais, "Envia eventos de pedidos", "Webhook HTTPS")
-    Rel(vendamais, powerbi, "Disponibiliza dados para relatórios", "Azure SQL / Conector nativo")
-    Rel(vendamais, email, "Envia notificações e alertas", "SMTP / SendGrid")
+    style vendamais fill:#1168BD,color:#fff,stroke:#0e57a0
+    style vendedor fill:#08427B,color:#fff,stroke:#063561
+    style gestor fill:#08427B,color:#fff,stroke:#063561
+    style admin fill:#08427B,color:#fff,stroke:#063561
+    style crm fill:#6c757d,color:#fff,stroke:#565e64
+    style erp fill:#6c757d,color:#fff,stroke:#565e64
+    style ecommerce fill:#6c757d,color:#fff,stroke:#565e64
+    style powerbi fill:#6c757d,color:#fff,stroke:#565e64
+    style email fill:#6c757d,color:#fff,stroke:#565e64
 ```
 
 ---
