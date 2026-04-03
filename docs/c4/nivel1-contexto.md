@@ -2,7 +2,7 @@
 
 Este diagrama apresenta o sistema VendaMais em seu contexto, mostrando os usuários que interagem com ele e os sistemas externos com os quais se integra.
 
----
+---  
 
 ```mermaid
 flowchart TD
