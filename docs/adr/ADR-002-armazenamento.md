@@ -1,4 +1,4 @@
-# ADR-002: Estratégia de Armazenamento de Dados
+  # ADR-002: Estratégia de Armazenamento de Dados
 
 **Status:** Aceito  
 **Data:** 2026-04-03  
